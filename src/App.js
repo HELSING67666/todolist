@@ -5,17 +5,39 @@ import { TodoList } from './TodoList'
 import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton'
 
-const defaultTodos = [
-  { text: 'Prueba 1', completed: true },
-  { text: 'Prueba 2', completed: false },
-  { text: 'Prueba 3', completed: false },
-  { text: 'Prueba 4', completed: false },
-  { text: 'Prueba 5', completed: false }
-]
+// const defaultTodos = [
+//   { text: 'Prueba 1', completed: true },
+//   { text: 'Prueba 2', completed: false },
+//   { text: 'Prueba 3', completed: false },
+//   { text: 'Prueba 4', completed: false },
+//   { text: 'Prueba 5', completed: false }
+// ]
+
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos))
+// localStorage.removeItem('TODOS_V1')
+
+function useLocalStorage (itemName, initialValues) {
+  const localStorageItem = localStorage.getItem(itemName)
+  let parseItems
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValues))
+    parseItems = initialValues
+  } else {
+    parseItems = JSON.parse(localStorageItem)
+  }
+
+  const [item, setItem] = React.useState(parseItems)
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem))
+    setItem(newItem)
+  }
+
+  return [item, saveItem]
+}
 
 function App () {
-  // eslint-disable-next-line no-unused-vars
-  const [todos, setTodos] = React.useState(defaultTodos)
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = React.useState('')
 
   const completedTodos = todos.filter(todo => todo.completed).length
@@ -29,21 +51,21 @@ function App () {
     })
 
   const completeTodos = (text) => {
-    const newTodos = [...todos]
-    const todoIndex = newTodos.findIndex(
+    const newItem = [...todos]
+    const todoIndex = newItem.findIndex(
       todo => todo.text === text
     )
-    newTodos[todoIndex].completed = true
-    setTodos(newTodos)
+    newItem[todoIndex].completed = true
+    saveTodos(newItem)
   }
 
   const deleteTodos = (text) => {
-    const newTodos = [...todos]
-    const todoIndex = newTodos.findIndex(
+    const newItem = [...todos]
+    const todoIndex = newItem.findIndex(
       todo => todo.text === text
     )
-    newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    newItem.splice(todoIndex, 1)
+    saveTodos(newItem)
   }
 
   return (
