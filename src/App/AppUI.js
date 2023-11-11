@@ -1,49 +1,62 @@
-import React from 'react'
 import { TodoCounter } from '../TodoCounter'
 import { TodoSearch } from '../TodoSearch'
 import { TodoList } from '../TodoList'
 import { TodoItem } from '../TodoItem'
-import { CreateTodoButton } from '../CreateTodoButton'
 import { TodosLoading } from '../TodosLoading'
 import { TodosError } from '../TodosError'
 import { EmptyTodos } from '../EmptyTodos'
+import { CreateTodoButton } from '../CreateTodoButton'
+import { TodoContext } from '../TodoContext'
 
-function AppUI ({
-  completedTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodos,
-  deleteTodos,
-  loading,
-  error
-}) {
+function AppUI () {
   return (
-    < >
-     <TodoCounter completed = {completedTodos} total={totalTodos} />
-     <TodoSearch
-      searchValue={searchValue}
-      setSearchValue={setSearchValue} />
+    <>
+      <TodoCounter />
+      <TodoSearch />
 
-     <TodoList>
-    {loading && <TodosLoading/>}
-    {error && <TodosError/>}
-    {(!loading && searchedTodos.length === 0) && <EmptyTodos/>}
+      <TodoContext.Consumer>
+        {({
+          loading,
+          error,
+          searchedTodos,
+          completeTodo,
+          deleteTodo
+        //   openModal,
+        //   setOpenModal
+        }) => (
+          <TodoList>
+            {loading && (
+              <>
+                <TodosLoading />
 
-        {searchedTodos.map(todo => (
-          <TodoItem key={todo.text}
-                    text={todo.text}
-                    completed={todo.completed}
-                    onComplete={() => completeTodos(todo.text)}
-                    onDelete={() => deleteTodos(todo.text)}
-                    />
-        ))}
-     </TodoList>
+              </>
+            )}
+            {error && <TodosError/>}
+            {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
-     <CreateTodoButton/>
+            {searchedTodos.map(todo => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            ))}
+          </TodoList>
+
+        )}
+      </TodoContext.Consumer>
+
+      <CreateTodoButton />
+
+      {/* {openModal && (
+        <Modal>
+            Funcionalidad Modal
+        </Modal>
+      )} */}
+
     </>
-
   )
 }
 
