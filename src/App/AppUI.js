@@ -6,24 +6,28 @@ import { TodosLoading } from '../TodosLoading'
 import { TodosError } from '../TodosError'
 import { EmptyTodos } from '../EmptyTodos'
 import { CreateTodoButton } from '../CreateTodoButton'
+import { TodoForm } from '../TodoForm'
 import { TodoContext } from '../TodoContext'
+import { Modal } from '../Modal'
+import React from 'react'
 
 function AppUI () {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    // eslint-disable-next-line no-unused-vars
+    setOpenModal
+  } = React.useContext(TodoContext)
+  console.log(openModal)
   return (
     <>
       <TodoCounter />
       <TodoSearch />
 
-      <TodoContext.Consumer>
-        {({
-          loading,
-          error,
-          searchedTodos,
-          completeTodo,
-          deleteTodo
-        //   openModal,
-        //   setOpenModal
-        }) => (
           <TodoList>
             {loading && (
               <>
@@ -45,16 +49,15 @@ function AppUI () {
             ))}
           </TodoList>
 
-        )}
-      </TodoContext.Consumer>
-
       <CreateTodoButton />
 
-      {/* {openModal && (
+      {openModal && (
+        <>
         <Modal>
-            Funcionalidad Modal
+            <TodoForm/>
         </Modal>
-      )} */}
+        </>
+      )}
 
     </>
   )
