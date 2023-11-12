@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Personal/Estudio/Desarrollo/todolist/build/static/css/main.eecb5cda.css",
-    "main.js": "/Personal/Estudio/Desarrollo/todolist/build/static/js/main.2d0290a2.js",
-    "static/js/787.97a945da.chunk.js": "/Personal/Estudio/Desarrollo/todolist/build/static/js/787.97a945da.chunk.js",
-    "index.html": "/Personal/Estudio/Desarrollo/todolist/build/index.html",
-    "static/media/delete.svg": "/Personal/Estudio/Desarrollo/todolist/build/static/media/delete.67697f56fd2f149bc9515a879062ad5c.svg",
-    "static/media/check.svg": "/Personal/Estudio/Desarrollo/todolist/build/static/media/check.23109d14544b9bb9b3d5d4e65ea13701.svg",
-    "main.eecb5cda.css.map": "/Personal/Estudio/Desarrollo/todolist/build/static/css/main.eecb5cda.css.map",
-    "main.2d0290a2.js.map": "/Personal/Estudio/Desarrollo/todolist/build/static/js/main.2d0290a2.js.map",
-    "787.97a945da.chunk.js.map": "/Personal/Estudio/Desarrollo/todolist/build/static/js/787.97a945da.chunk.js.map"
+    "main.css": "/HELSING67666/todolist/static/css/main.eecb5cda.css",
+    "main.js": "/HELSING67666/todolist/static/js/main.d643f1e8.js",
+    "static/js/787.97a945da.chunk.js": "/HELSING67666/todolist/static/js/787.97a945da.chunk.js",
+    "index.html": "/HELSING67666/todolist/index.html",
+    "static/media/delete.svg": "/HELSING67666/todolist/static/media/delete.67697f56fd2f149bc9515a879062ad5c.svg",
+    "static/media/check.svg": "/HELSING67666/todolist/static/media/check.23109d14544b9bb9b3d5d4e65ea13701.svg",
+    "main.eecb5cda.css.map": "/HELSING67666/todolist/static/css/main.eecb5cda.css.map",
+    "main.d643f1e8.js.map": "/HELSING67666/todolist/static/js/main.d643f1e8.js.map",
+    "787.97a945da.chunk.js.map": "/HELSING67666/todolist/static/js/787.97a945da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eecb5cda.css",
-    "static/js/main.2d0290a2.js"
+    "static/js/main.d643f1e8.js"
   ]
 }
