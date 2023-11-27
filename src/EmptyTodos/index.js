@@ -2,7 +2,8 @@ import React from 'react'
 
 function EmptyTodos () {
   return (
-    <div>EmptyTodos</div>
+
+    <div>No hay TODOS creados</div>
   )
 }
 
